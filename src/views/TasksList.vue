@@ -16,8 +16,23 @@ export default {
   components: {
     TaskCard
   },
+  created() {
+    // axios
+    //   .get(
+    //     "https://my-json-server.typicode.com/Nate-Lia/CSS-II-FakeJSON-Server/tasks"
+    //   )
+    TasksService.getTasks()
+      .then(response => {
+        this.tasks = response.data;
+      })
+      .catch(err => {
+        console.log("Errors: " + err);
+      });
+  },
   data() {
-    return {};
+    return {
+      tasks: [null]
+    };
   }
 };
 </script>
